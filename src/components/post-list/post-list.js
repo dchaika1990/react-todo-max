@@ -1,5 +1,6 @@
 import React from 'react';
 import PostListItem from '../post-list-item';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 import './post-list.scss'
 
@@ -10,19 +11,16 @@ const PostList = ({posts}) => {
 		.map(post => {
 			const {id, ...itemProps} = post;
 			return (
-				<li key={id} className={`list-group-item`}>
-					<PostListItem {...itemProps}
-						// label={post.label}
-						// important={post.important}
-					/>
-				</li>
+				<ListGroupItem key={id}>
+					<PostListItem {...itemProps}/>
+				</ListGroupItem>
 			)
 		})
 
 	return (
-		<ul className={`app-list list-group`}>
+		<ListGroup className={`app-list`}>
 			{elements}
-		</ul>
+		</ListGroup>
 	)
 }
 
