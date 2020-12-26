@@ -4,7 +4,7 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 
 import './post-list.scss'
 
-const PostList = ({posts}) => {
+const PostList = ({posts, onDelete}) => {
 
 	const elements = posts
 		.filter(post => post && typeof post === 'object')
@@ -12,7 +12,10 @@ const PostList = ({posts}) => {
 			const {id, ...itemProps} = post;
 			return (
 				<ListGroupItem key={id}>
-					<PostListItem {...itemProps}/>
+					<PostListItem
+						onDelete={() => onDelete(id)}
+						{...itemProps}
+					/>
 				</ListGroupItem>
 			)
 		})
